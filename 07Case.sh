@@ -10,14 +10,16 @@ else
 
 		# Imrpimimos el menú de opciones
 		i=1
-		echo "Selecciona un modo:"
+		echo "Opciones:"
 		for modo in ${modos[@]}; do
 			echo -e "\t$i. $modo"
 			i=$(($i+1))
 		done
+		echo -e "\t$i. SALIR"
+		echo ""
 
 		# Pedimos al usuario que introduzca la acción a realizar
-		read -p "Introduce el número correspondiente al modo que deseas: " opcion
+		read -p "Introduce el modo que deseas: " opcion
 
 		# En función de la entrada, ejecutamos un modo u otro
 		case $opcion in
@@ -30,15 +32,12 @@ else
 				fi
 				;;
 			2)
-				read -p "Introduce el dominio: " dominio
 				host $dominio | grep "has address" | cut -d ' ' -f 4
 				;;
 			3)
-				read -p "Introduce el dominio: " dominio
 				dig $dominio
 				;;
 			4)
-				read -p "Introduce el dominio: " dominio
 				direccion=$(host $dominio | grep "has address" | cut -d ' ' -f 4)
 				if [ -n "$direccion" ]; then
 					whois $direccion

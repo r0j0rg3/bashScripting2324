@@ -1,7 +1,10 @@
 #!/bin/bash
+# Este script recibe una acción y un dominio, y muestra info de ese dominio según la opción
 
+# Definimos un array con los 4 modos, SIN comas y ENTRE PARÉNTESIS
 modos=("ALIVE" "IP" "DNS" "INFO")
 
+# Comprobamos que hay dos argumentos
 if [[ $# -ne 2 ]]; then
 	echo "Uso: ./05IfStrings.sh <MODO> <dominio>"
 	echo -e "Introduce uno de estos modos:"
@@ -9,6 +12,7 @@ if [[ $# -ne 2 ]]; then
 		echo -e "\t$modo"
 	done
 else
+	# En función del parámetro hacemos una cosa u otra
 	if [[ $1 == ${modos[0]} ]]; then
 		ping -c 1 $2 > /dev/null 2>&1
 		if [ $? -eq 0 ]; then
