@@ -2,7 +2,7 @@
 
 # Comprobamos que se recibe un argumento
 if [[ $# -ne 1 ]]; then
-	echo "Uso: ./06InfoFile.sh <archivo>"
+	echo "Uso: $0 <archivo>"
 else
 	# Comprobamos que existe
 	if ! [[ -e $1 ]]; then

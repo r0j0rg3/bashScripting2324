@@ -6,7 +6,7 @@ modos=("ALIVE" "IP" "DNS" "INFO")
 
 # Comprobamos que hay dos argumentos
 if [[ $# -ne 2 ]]; then
-	echo "Uso: ./05IfStrings.sh <MODO> <dominio>"
+	echo "Uso: $0 <MODO> <dominio>"
 	echo -e "Introduce uno de estos modos:"
 	for modo in ${modos[@]}; do
 		echo -e "\t$modo"

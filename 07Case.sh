@@ -3,20 +3,14 @@
 modos=("ALIVE" "IP" "DNS" "INFO")
 
 if [[ $# -ne 1 ]]; then
-	echo "Uso: ./06InfoFile.sh <dominio>"
+	echo "Uso: $0 <dominio>"
 else 
 	dominio=$1
 	while true; do
 
-		# Imrpimimos el menú de opciones
-		i=1
-		echo "Opciones:"
-		for modo in ${modos[@]}; do
-			echo -e "\t$i. $modo"
-			i=$(($i+1))
+		for i in ${!modos[@]}; do
+			echo -e "\t$(($i+1)). ${modos[$i]}"
 		done
-		echo -e "\t$i. SALIR"
-		echo ""
 
 		# Pedimos al usuario que introduzca la acción a realizar
 		read -p "Introduce el modo que deseas: " opcion
@@ -32,6 +26,7 @@ else
 				fi
 				;;
 			2)
+				echo -n "La ip es "
 				host $dominio | grep "has address" | cut -d ' ' -f 4
 				;;
 			3)
@@ -45,13 +40,10 @@ else
 					echo "No se pudo obtener la dirección IP del dominio."
 				fi
 				;;
-			5)
-				echo "Saliendo del programa."
-				exit 0
-				;;
 			*)
-				echo "Opción inválida. Por favor, elige una opción válida (1-5)."
+				echo "Opción inválida. Elige una opción válida (1-${#modos[*]})."
 				;;
 		esac
+		echo ""
 	done
 fi

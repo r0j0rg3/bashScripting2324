@@ -6,7 +6,7 @@ echo -e "Has introducido $# nombres."
 # Recorremos la lista imprimiendo todos los argumentos
 if [ $# -eq 0 ]; then
     echo -e "No has introducido parámetros"
-	echo -e "Uso: ./03VariosHolaMundo.sh <nombre1> [... nombreN]"
+	echo -e "Uso: $0 <nombre1> [... nombreN]"
 
 else
     # $@ Todos los argumentos (Como strings separadas)
